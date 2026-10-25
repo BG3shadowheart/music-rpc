@@ -1,7 +1,0 @@
-winrt-Windows.Media.Control==3.2.1
-winrt-Windows.Foundation==3.2.1
-winrt-Windows.Foundation.Collections==3.2.1
-winrt-Windows.Storage.Streams==3.2.1
-pypresence==4.6.2
-Pillow==13.0.0
-Nuitka[onefile]==4.3.1
