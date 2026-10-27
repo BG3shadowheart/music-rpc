@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Music RPC - YouTube Music",
+  "version": "2.0.0",
+  "description": "Sends the currently playing YouTube Music track to the local Music RPC companion so it can appear in Discord Rich Presence.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtQ9k02sK0Hd/zLxwaXsjGLQxiBZybzrNJCgsXNzpAqyZ8YYsldSSXB8ks+lh+c5IICPkTgMGzUZn63hUgb6vAHmYBfpAjh1Q0ydwq4/1rVwjtr119yHGnV9qLARDdf1EVy6SGTJCXsxkSTaU57PL2enHsr1Up3K4fSkYc+lp4Y9c4SiibUX/G2dnzpBrMjyYA+U+SFC0FprH/gLjg3xScn1JmhcCot8KPevU1s4Ud0DnbEBvqJ5iZF8wvo3Kl7QfpG73rC0sUf0ty9oi39QNxuRqnIGt4+7MNQXCTv5Oo6nLlsml4WbPIPXstqm/H8TBlr96NH763+vhRZUq3VSeSQIDAQAB",
+  "homepage_url": "https://github.com/BG3shadowheart/music-rpc",
+  "permissions": [
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "https://music.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://music.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Music RPC - YouTube Music"
+  }
+}

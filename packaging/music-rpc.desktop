@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Music RPC
+GenericName=Music Rich Presence
+Comment=Discord Rich Presence for Fooyin and YouTube Music
+Exec=music-rpc run
+Icon=music-rpc
+Terminal=false
+Categories=Audio;Music;Utility;
+Keywords=discord;presence;music;fooyin;youtube;
+StartupNotify=false

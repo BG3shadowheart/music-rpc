@@ -1,0 +1,7 @@
+# Linux runtime dependencies (soft pins; see requirements-lock.txt for the
+# exact versions the released artifacts were built with).
+jeepney>=0.9,<0.10
+pypresence>=4.6,<5
+Pillow>=10
+# Optional, needed for the tray icon and the settings window:
+PyQt6>=6.6

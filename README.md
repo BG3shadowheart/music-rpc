@@ -16,6 +16,16 @@ Installed name: **Spotify**. Install location:
 > Discord. (Only the app owner can do this, and Discord's naming/branding rules
 > apply to that change.)
 
+## Linux version
+
+A native Linux port lives in this same repository on the `arena/ceccfe49-music-rpc`
+branch: **Fooyin and YouTube Music through MPRIS and a browser extension**, with
+a system tray icon, autostart, `.deb`/RPM/AppImage build files and an automated
+test suite. The Windows build described above is unchanged.
+
+Start here: [`README-LINUX.md`](README-LINUX.md).
+
+
 ## Install
 
 1. Run **`Spotify-Setup.exe`**.

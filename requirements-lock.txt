@@ -1,0 +1,7 @@
+# Reproducible dependency set used to build the artifacts in dist/
+# Install with:  python3 -m pip install -r requirements-lock.txt
+# Linux only: no WinRT/Windows packages are listed here.
+jeepney==0.9.0
+pypresence==4.6.2
+Pillow==13.0.0
+PyQt6==6.11.0

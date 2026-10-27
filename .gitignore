@@ -1,0 +1,18 @@
+# Build outputs (the two released artifacts are whitelisted below)
+build/
+dist/*
+!dist/music-rpc_3.0.0_all.deb
+!dist/music-rpc-3.0.0-source.tar.gz
+dist-installer/
+*.AppImage
+*.AppImage.zsync
+*.rpm
+*.spec.in
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+# Local extension signing key (not needed to load the extension unpacked)
+extension/*.pem
+extension/*.crx
+extension/*.crx.key

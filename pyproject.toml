@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "music-rpc"
+version = "3.0.0"
+description = "Discord Rich Presence for Fooyin and YouTube Music on Linux (MPRIS)"
+readme = "README-LINUX.md"
+requires-python = ">=3.9"
+authors = [{ name = "BG3shadowheart" }]
+keywords = ["discord", "rich presence", "mpris", "fooyin", "youtube-music", "linux"]
+classifiers = [
+  "Environment :: X11 Applications :: Qt",
+  "Intended Audience :: End Users/Desktop",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Topic :: Multimedia :: Sound/Audio",
+]
+# Only Linux-compatible dependencies. PyQt6 is optional (tray icon + settings).
+dependencies = [
+  "jeepney>=0.9,<0.10",
+  "pypresence>=4.6,<5",
+  "Pillow>=10",
+]
+
+[project.optional-dependencies]
+tray = ["PyQt6>=6.6"]
+dev = ["pytest>=8", "pyinstaller>=6"]
+
+[project.scripts]
+music-rpc = "musicrpc.cli:main"
+
+[tool.setuptools]
+packages = ["musicrpc", "musicrpc.backends"]
+
+[tool.setuptools.package-data]
+musicrpc = ["data/*.png"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

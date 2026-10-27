@@ -1,0 +1,64 @@
+{
+  "_comment": [
+    "EXPERIMENTAL / NOT RECOMMENDED. Flatpak sandboxing blocks the two features",
+    "this app depends on most:",
+    "  1. Discord IPC. The Discord desktop client is usually itself a Flatpak;",
+    "     its socket lives in $XDG_RUNTIME_DIR/discord-ipc-* and has to be",
+    "     shared explicitly with --filesystem=xdg-run/discord-ipc-0.",
+    "  2. Browser native messaging. Browsers inside (or outside) the sandbox",
+    "     cannot execute a host binary from another sandbox, and Flatpak has no",
+    "     supported way to register native messaging hosts across sandboxes.",
+    "     Therefore the YouTube Music extension does NOT work with this build;",
+    "     only MPRIS players (Fooyin, VLC, mpv, Chromium with MPRIS) do.",
+    "Use the .deb, the RPM or the self-contained tarball instead."
+  ],
+  "id": "org.musicrpc.MusicRPC",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "46",
+  "sdk": "org.gnome.Sdk",
+  "command": "music-rpc",
+  "finish-args": [
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--talk-name=org.freedesktop.DBus",
+    "--talk-name=org.kde.StatusNotifierWatcher",
+    "--filesystem=xdg-run/discord-ipc-0",
+    "--filesystem=xdg-run/discord-ipc-1",
+    "--filesystem=xdg-run/discord-ipc-2",
+    "--filesystem=xdg-run/discord-ipc-3",
+    "--filesystem=xdg-run/discord-ipc-4",
+    "--filesystem=xdg-run/discord-ipc-5",
+    "--filesystem=xdg-run/discord-ipc-6",
+    "--filesystem=xdg-run/discord-ipc-7",
+    "--filesystem=xdg-run/discord-ipc-8",
+    "--filesystem=xdg-run/discord-ipc-9",
+    "--filesystem=~/.local/share/music-rpc:create",
+    "--filesystem=~/.config/music-rpc:create"
+  ],
+  "build-options": {
+    "build-args": ["--share=network"]
+  },
+  "modules": [
+    {
+      "name": "python3-modules",
+      "buildsystem": "simple",
+      "build-commands": [
+        "pip3 install --no-build-isolation --prefix=/app jeepney==0.9.0 pypresence==4.6.2 Pillow"
+      ]
+    },
+    {
+      "name": "music-rpc",
+      "buildsystem": "simple",
+      "build-commands": [
+        "pip3 install --no-build-isolation --no-deps --prefix=/app .",
+        "install -Dm644 packaging/music-rpc.desktop /app/share/applications/org.musicrpc.MusicRPC.desktop",
+        "install -Dm644 linux/icons/hicolor/512x512/apps/music-rpc.png /app/share/icons/hicolor/512x512/apps/music-rpc.png",
+        "mkdir -p /app/share/music-rpc && cp -r extension /app/share/music-rpc/extension"
+      ],
+      "sources": [
+        { "type": "dir", "path": "../.." }
+      ]
+    }
+  ]
+}
